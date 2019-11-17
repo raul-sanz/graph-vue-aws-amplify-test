@@ -1,0 +1,14 @@
+type Post @model {
+  id: ID! @isUnique
+  title: String
+  author: User @relation(name: "UserPosts")
+  description: String!
+  imageUrl: String
+}
+
+type User @model {
+  id: ID! @isUnique
+  name: String
+  dateOfBirth: DateTime
+  posts: [Post!]! @relation(name: "UserPosts")
+}
